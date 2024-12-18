@@ -635,13 +635,17 @@ var _clockAPPViewJsDefault = parcelHelpers.interopDefault(_clockAPPViewJs);
         //await model.getGeoLocation(model.state.ip);
         await _modelJs.getTime(_modelJs.state.timezones);
         await _modelJs.getLocation();
-        setTimeout(function() {
-            const data = _modelJs.state;
-            (0, _clockAPPViewJsDefault.default).render(data);
-        }, _configJs.SHOW_COUNTRIES_SEC * 1000);
-    } catch (err) {
+        const data = _modelJs.state;
+        (0, _clockAPPViewJsDefault.default).render(data);
+    /*
+    setTimeout(function () {
+      const data = model.state;
+      clockAPPView.render(data);
+    }, config.SHOW_COUNTRIES_SEC * 1000);
+    */ } catch (err) {
         // Handle any errors that occur during the execution of the function
         console.error(err);
+        (0, _clockAPPViewJsDefault.default).renderError();
     }
 };
 const controlBackGroundImageAPP = function() {
@@ -815,7 +819,6 @@ var _configJs = require("./config.js");
 };
 const getJSON = async function(url) {
     try {
-        console.log(url);
         mode: "no-cors";
         referrerPolicy: "unsafe-url";
         // Fetch the data from the given URL, and set a timeout of 5 seconds
@@ -867,9 +870,12 @@ var _bgImageDaytimeJpg2 = require("../../assets/mobile/bg-image-daytime.jpg");
 var _bgImageDaytimeJpgDefault2 = parcelHelpers.interopDefault(_bgImageDaytimeJpg2);
 var _bgImageNighttimeJpg2 = require("../../assets/mobile/bg-image-nighttime.jpg");
 var _bgImageNighttimeJpgDefault2 = parcelHelpers.interopDefault(_bgImageNighttimeJpg2);
+var _crossIconSvg = require("../../assets/cross-icon.svg");
+var _crossIconSvgDefault = parcelHelpers.interopDefault(_crossIconSvg);
 class ClockAPPView {
     _parentElement = document.querySelector(".clock-app");
     _data;
+    _errorMessage = "Something went wrong, please try again!";
     render(data) {
         if (!data) return;
         this._data = data;
@@ -880,6 +886,25 @@ class ClockAPPView {
     }
     _clearMarkup() {
         this._parentElement.innerHTML = "";
+    }
+    renderError(message = this._errorMessage) {
+        const errorMarkup = `
+    <div class="message msg-danger">
+      <div class="message-icon">
+        <i class="ion-close-round">
+          <img src="${(0, _crossIconSvgDefault.default)}" alt="error-icon" />
+        </i>
+      </div>
+      <div class="message-content">
+        <p>${message}</p>
+      </div>
+      <a href="_" class="message-close">
+        <img class="close-icon" src="${(0, _crossIconSvgDefault.default)}" alt="close-icon" />
+      </a>
+    </div>
+  `;
+        this._parentElement.innerHTML = "";
+        this._parentElement.insertAdjacentHTML("beforeend", errorMarkup);
     }
     renderSpinner = function() {
         let markup = `<div class="loader-container">
@@ -1032,7 +1057,7 @@ class ClockAPPView {
 }
 exports.default = new ClockAPPView();
 
-},{"./view.js":"bWlJ9","../../assets/desktop/icon-refresh.svg":"h0Jtu","../../assets/desktop/icon-sun.svg":"bqMMT","../../assets/desktop/icon-moon.svg":"iAEPN","../../assets/desktop/icon-arrow-down.svg":"48URG","../../assets/desktop/icon-arrow-up.svg":"lr7CZ","../../assets/desktop/bg-image-daytime.jpg":"2AXyu","../../assets/desktop/bg-image-nighttime.jpg":"hDSYy","../../assets/tablet/bg-image-daytime.jpg":"j6Qga","../../assets/tablet/bg-image-nighttime.jpg":"84lqR","../../assets/mobile/bg-image-daytime.jpg":"jKeFD","../../assets/mobile/bg-image-nighttime.jpg":"bc265","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bWlJ9":[function(require,module,exports,__globalThis) {
+},{"./view.js":"bWlJ9","../../assets/desktop/icon-refresh.svg":"h0Jtu","../../assets/desktop/icon-sun.svg":"bqMMT","../../assets/desktop/icon-moon.svg":"iAEPN","../../assets/desktop/icon-arrow-down.svg":"48URG","../../assets/desktop/icon-arrow-up.svg":"lr7CZ","../../assets/desktop/bg-image-daytime.jpg":"2AXyu","../../assets/desktop/bg-image-nighttime.jpg":"hDSYy","../../assets/tablet/bg-image-daytime.jpg":"j6Qga","../../assets/tablet/bg-image-nighttime.jpg":"84lqR","../../assets/mobile/bg-image-daytime.jpg":"jKeFD","../../assets/mobile/bg-image-nighttime.jpg":"bc265","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../../assets/cross-icon.svg":"iTBLl"}],"bWlJ9":[function(require,module,exports,__globalThis) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "View", ()=>View);
@@ -1108,6 +1133,9 @@ module.exports = require("f3d205e0795f2a34").getBundleURL('hWUTQ') + "bg-image-d
 },{"f3d205e0795f2a34":"lgJ39"}],"bc265":[function(require,module,exports,__globalThis) {
 module.exports = require("6191965463c2d188").getBundleURL('hWUTQ') + "bg-image-nighttime.3ca0e7e5.jpg" + "?" + Date.now();
 
-},{"6191965463c2d188":"lgJ39"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
+},{"6191965463c2d188":"lgJ39"}],"iTBLl":[function(require,module,exports,__globalThis) {
+module.exports = require("b8d23ea3ce607625").getBundleURL('hWUTQ') + "cross-icon.8526866f.svg" + "?" + Date.now();
+
+},{"b8d23ea3ce607625":"lgJ39"}]},["ik2hV","aenu9"], "aenu9", "parcelRequire94c2")
 
 //# sourceMappingURL=index.e37f48ea.js.map

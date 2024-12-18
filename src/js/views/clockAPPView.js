@@ -10,10 +10,13 @@ import backgroundImageDayTimeTab from "../../assets/tablet/bg-image-daytime.jpg"
 import backgroundImageNightTimeTab from "../../assets/tablet/bg-image-nighttime.jpg";
 import backgroundImageDayTimeMobile from "../../assets/mobile/bg-image-daytime.jpg";
 import backgroundImageNightTimeMobile from "../../assets/mobile/bg-image-nighttime.jpg";
+import errorImage from "../../assets/cross-icon.svg";
+import crossImage from "../../assets/cross-icon.svg";
 
 export class ClockAPPView {
   _parentElement = document.querySelector(".clock-app");
   _data;
+  _errorMessage = "Something went wrong, please try again!";
 
   render(data) {
     if (!data) return;
@@ -26,6 +29,26 @@ export class ClockAPPView {
 
   _clearMarkup() {
     this._parentElement.innerHTML = "";
+  }
+
+  renderError(message = this._errorMessage) {
+    const errorMarkup = `
+    <div class="message msg-danger">
+      <div class="message-icon">
+        <i class="ion-close-round">
+          <img src="${errorImage}" alt="error-icon" />
+        </i>
+      </div>
+      <div class="message-content">
+        <p>${message}</p>
+      </div>
+      <a href="_" class="message-close">
+        <img class="close-icon" src="${crossImage}" alt="close-icon" />
+      </a>
+    </div>
+  `;
+    this._parentElement.innerHTML = "";
+    this._parentElement.insertAdjacentHTML("beforeend", errorMarkup);
   }
 
   renderSpinner = function () {

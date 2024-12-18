@@ -40,7 +40,6 @@ const timeout = function (seconds) {
  */
 export const getJSON = async function (url) {
   try {
-    console.log(url);
     mode: "no-cors";
     referrerPolicy: "unsafe-url";
     // Fetch the data from the given URL, and set a timeout of 5 seconds

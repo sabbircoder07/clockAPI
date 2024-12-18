@@ -42,13 +42,19 @@ const controlClockAPP = async function () {
     await model.getTime(model.state.timezones);
     await model.getLocation();
 
+    const data = model.state;
+    clockAPPView.render(data);
+
+    /*
     setTimeout(function () {
       const data = model.state;
       clockAPPView.render(data);
     }, config.SHOW_COUNTRIES_SEC * 1000);
+    */
   } catch (err) {
     // Handle any errors that occur during the execution of the function
     console.error(err);
+    clockAPPView.renderError();
   }
 };
 
