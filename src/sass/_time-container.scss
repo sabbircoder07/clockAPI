@@ -1,0 +1,103 @@
+.time-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5rem 15rem;
+  @media only screen and (max-width: $bp-largest) {
+    padding: 5rem 10rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    padding: 5rem;
+  }
+  @media only screen and (max-width: $bp-medium-tab) {
+    flex-direction: column;
+    gap: 5rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem 2rem;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: -1rem;
+    @media only screen and (max-width: $bp-small) {
+      margin-bottom: -5rem;
+    }
+  }
+  &__icon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  &__time {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: -1rem;
+    @media only screen and (max-width: $bp-small) {
+      margin-bottom: -5rem;
+    }
+  }
+  &__current-time {
+    @media only screen and (max-width: $bp-small) {
+      display: none;
+      visibility: hidden;
+      opacity: 1;
+    }
+  }
+  &__ampm {
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  &__cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  &__button {
+    width: 12rem;
+    height: 4.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+    background-color: var(--color-White);
+    color: var(--color-primary);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    border-radius: 5rem;
+    padding-left: 0.8rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    &:hover {
+      transform: translateY(-5px);
+    }
+    &:hover .time-container__arrow-container {
+      background-color: var(--color-secondary);
+    }
+  }
+  &__arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+  }
+  &__arrow {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
+}

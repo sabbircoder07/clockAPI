@@ -1,0 +1,56 @@
+.quote-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 5rem 15rem;
+  @media only screen and (max-width: $bp-largest) {
+    padding: 5rem 10rem;
+  }
+  @media only screen and (max-width: $bp-medium) {
+    padding: 5rem;
+  }
+  @media only screen and (max-width: $bp-small) {
+    padding: 5rem 2rem;
+  }
+  transition: height 0.3s ease-in-out;
+  &__hide {
+    display: none !important;
+    opacity: 0;
+  }
+  &__quote {
+    display: flex;
+    align-items: baseline;
+    width: 50%;
+    @media only screen and (max-width: $bp-largest) {
+      width: 60%;
+    }
+    @media only screen and (max-width: $bp-large) {
+      width: 70%;
+    }
+    @media only screen and (max-width: $bp-medium) {
+      width: 90%;
+    }
+    @media only screen and (max-width: $bp-medium-tab) {
+      width: 100%;
+    }
+  }
+  &__refresh {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 0.8rem;
+    height: 0.8rem;
+    padding: 1rem;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+  }
+  &__refresh-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    cursor: pointer;
+  }
+  &__author {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
